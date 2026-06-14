@@ -1,0 +1,39 @@
+.tradepage { display: flex; flex-direction: column; gap: 20px; }
+.tradepage__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.tradepage__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.tradepage__subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.tradepage__summary {
+  display: flex;
+  gap: 8px;
+}
+.tradepage__pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+}
+.tradepage__pill--gain {
+  color: var(--accent-gain);
+  background: rgba(0, 212, 168, 0.08);
+  border: 1px solid rgba(0, 212, 168, 0.2);
+}
+.tradepage__pill--loss {
+  color: var(--accent-loss);
+  background: rgba(255, 77, 106, 0.08);
+  border: 1px solid rgba(255, 77, 106, 0.2);
+}

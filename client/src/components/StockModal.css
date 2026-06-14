@@ -1,0 +1,252 @@
+.smodal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--bg-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+  padding: 20px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.smodal {
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  animation: modalIn 0.3s ease-out;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.smodal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 24px 28px 0;
+  gap: 16px;
+}
+.smodal__ticker {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+.smodal__company {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.smodal__price-block {
+  text-align: right;
+}
+.smodal__price {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.smodal__delta {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+}
+.smodal__close {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.smodal__close:hover {
+  color: var(--accent-loss);
+  border-color: var(--accent-loss);
+}
+
+.smodal__chart-wrap {
+  padding: 20px 28px;
+}
+.smodal__canvas {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.smodal__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 28px 16px;
+}
+.smodal__stat {
+  flex: 1;
+  min-width: 90px;
+  padding: 10px 0;
+  border-right: 1px solid var(--border-color);
+  text-align: center;
+}
+.smodal__stat:last-child { border-right: none; }
+.smodal__stat-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.smodal__stat-value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.smodal__trade {
+  padding: 20px 28px 28px;
+  border-top: 1px solid var(--border-color);
+}
+
+.smodal__action-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+.smodal__action-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: var(--bg-primary);
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+.smodal__action-btn--active-buy {
+  background: rgba(0, 212, 168, 0.15);
+  color: var(--accent-gain);
+}
+.smodal__action-btn--active-sell {
+  background: rgba(255, 77, 106, 0.15);
+  color: var(--accent-loss);
+}
+
+.smodal__trade-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.smodal__trade-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.smodal__trade-input {
+  width: 100px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+  text-align: right;
+}
+.smodal__trade-input:focus {
+  border-color: var(--accent-blue);
+}
+.smodal__trade-total {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.smodal__execute {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+.smodal__execute:active { transform: scale(0.98); }
+.smodal__execute:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.smodal__execute--buy {
+  background: linear-gradient(135deg, var(--accent-gain), #00b894);
+  color: #0a0e1a;
+}
+.smodal__execute--sell {
+  background: linear-gradient(135deg, var(--accent-loss), #e74c3c);
+  color: #fff;
+}
+
+.smodal__error {
+  color: var(--accent-loss);
+  font-size: 13px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .smodal-overlay { padding: 10px; }
+  .smodal { max-width: 100%; border-radius: 12px; }
+  .smodal__header { padding: 18px 18px 0; }
+  .smodal__ticker { font-size: 22px; }
+  .smodal__price { font-size: 20px; }
+  .smodal__chart-wrap { padding: 16px 18px; }
+  .smodal__canvas { height: 160px; }
+  .smodal__stats { padding: 0 18px 12px; }
+  .smodal__stat { min-width: 70px; }
+  .smodal__trade { padding: 16px 18px 22px; }
+}
+
+@media (max-width: 480px) {
+  .smodal-overlay { padding: 0; align-items: flex-end; }
+  .smodal { border-radius: 16px 16px 0 0; max-height: 95vh; }
+  .smodal__header { padding: 16px 14px 0; }
+  .smodal__ticker { font-size: 18px; }
+  .smodal__price { font-size: 18px; }
+  .smodal__chart-wrap { padding: 12px 14px; }
+  .smodal__canvas { height: 120px; }
+  .smodal__stats { padding: 0 14px 10px; flex-wrap: wrap; }
+  .smodal__stat { min-width: 50%; border-right: none; border-bottom: 1px solid var(--border-color); padding: 8px 0; }
+  .smodal__trade { padding: 14px; }
+  .smodal__trade-input { width: 80px; }
+}
+

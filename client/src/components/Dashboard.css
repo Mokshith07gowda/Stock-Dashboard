@@ -1,0 +1,29 @@
+.dashboard {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.dashboard__page {
+  margin-left: 72px;
+  padding: 104px 28px 28px;
+  max-width: 1300px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard__page {
+    padding: 100px 20px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard__page {
+    margin-left: 0;
+    padding: 96px 12px 72px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard__page {
+    padding: 88px 8px 68px;
+  }
+}

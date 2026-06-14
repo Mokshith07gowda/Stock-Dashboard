@@ -1,0 +1,203 @@
+.wlpage {
+  padding: 4px;
+}
+.wlpage__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+.wlpage__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.wlpage__subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.wlpage__add-btn {
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0e1a;
+  background: var(--accent-gain);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: var(--font-ui);
+  white-space: nowrap;
+}
+.wlpage__add-btn:hover { opacity: 0.85; }
+
+.wlpage__empty {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+.wlpage__empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.wlpage__empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.wlpage__empty-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 400px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+.wlpage__empty-btn {
+  padding: 10px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0e1a;
+  background: var(--accent-gain);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: var(--font-ui);
+}
+.wlpage__empty-btn:hover { opacity: 0.85; }
+
+.wlpage__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.wlcard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.wlcard:hover {
+  box-shadow: var(--shadow-card);
+}
+.wlcard--gain { border-left: 3px solid var(--accent-gain); }
+.wlcard--loss { border-left: 3px solid var(--accent-loss); }
+
+.wlcard__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.wlcard__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wlcard__ticker {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+.wlcard__company {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.wlcard__unsub {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-ui);
+}
+.wlcard__unsub:hover {
+  color: var(--accent-loss);
+  border-color: var(--accent-loss);
+  background: rgba(255, 77, 106, 0.06);
+}
+
+.wlcard__chart {
+  margin-bottom: 12px;
+}
+
+.wlcard__bottom {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.wlcard__price {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.wlcard__delta {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+}
+.wlcard__delta.gain { color: var(--accent-gain); }
+.wlcard__delta.loss { color: var(--accent-loss); }
+
+.wlcard__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+.wlcard__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.wlcard__stat-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.wlcard__stat-val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.wlcard__stat-val.gain { color: var(--accent-gain); }
+.wlcard__stat-val.loss { color: var(--accent-loss); }
+
+@media (max-width: 768px) {
+  .wlpage__grid { grid-template-columns: 1fr; }
+  .wlpage__header { flex-wrap: wrap; }
+  .wlcard { padding: 16px; }
+  .wlcard__price { font-size: 18px; }
+  .wlcard__stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .wlpage__title { font-size: 18px; }
+  .wlpage__subtitle { font-size: 12px; }
+  .wlpage__add-btn { padding: 7px 14px; font-size: 12px; }
+  .wlpage__empty { padding: 40px 16px; }
+  .wlpage__empty-icon { font-size: 36px; }
+  .wlpage__empty-title { font-size: 16px; }
+  .wlcard__ticker { font-size: 14px; }
+  .wlcard__price { font-size: 16px; }
+}
+

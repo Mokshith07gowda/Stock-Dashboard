@@ -1,0 +1,59 @@
+.tape {
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 0;
+  position: relative;
+}
+.tape__track {
+  display: flex;
+  gap: 36px;
+  white-space: nowrap;
+  animation: tapeScroll 25s linear infinite;
+  width: max-content;
+}
+@keyframes tapeScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tape__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.tape__ticker {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+}
+.tape__price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.tape__delta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .tape { padding: 6px 0; }
+  .tape__track { gap: 24px; }
+  .tape__ticker { font-size: 11px; }
+  .tape__price { font-size: 11px; }
+  .tape__delta { font-size: 10px; }
+}
+
+@media (max-width: 480px) {
+  .tape { padding: 5px 0; }
+  .tape__track { gap: 18px; }
+  .tape__ticker { font-size: 10px; }
+  .tape__price { font-size: 10px; }
+  .tape__delta { font-size: 9px; }
+}
+

@@ -1,0 +1,159 @@
+.mpanel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-card);
+}
+.mpanel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.mpanel__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mpanel__title::before { content: "📊"; font-size: 16px; }
+.mpanel__table-wrap { overflow-x: auto; }
+.mpanel__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.mpanel__table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  padding: 0 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+.mpanel__right { text-align: right !important; }
+.mpanel__center { text-align: center !important; }
+.mpanel__table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.4);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+.mrow { transition: background 0.2s; }
+.mrow:hover { background: var(--bg-card-hover); }
+.mrow--flash-gain { animation: flashGain 0.6s ease; }
+.mrow--flash-loss { animation: flashLoss 0.6s ease; }
+.mrow__ticker {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.mrow__company { color: var(--text-muted); font-size: 12px; }
+.mrow__price { font-family: var(--font-mono); font-weight: 600; }
+.mrow__delta { font-family: var(--font-mono); font-weight: 500; font-size: 12px; }
+.mrow__stat { font-family: var(--font-mono); font-size: 12px; font-weight: 500; }
+
+.mrow__actions {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+.mrow__btn {
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s, opacity 0.2s;
+  border: 1px solid transparent;
+  font-family: var(--font-ui);
+}
+.mrow__btn:active { transform: scale(0.96); }
+
+.mrow__btn--buy {
+  color: #0a0e1a;
+  background: var(--accent-gain);
+  border-color: var(--accent-gain);
+  font-weight: 700;
+}
+.mrow__btn--buy:hover { opacity: 0.85; }
+
+.mrow__btn--sell {
+  color: var(--accent-loss);
+  background: rgba(255, 77, 106, 0.1);
+  border-color: rgba(255, 77, 106, 0.35);
+}
+.mrow__btn--sell:hover:not(:disabled) {
+  background: rgba(255, 77, 106, 0.2);
+  border-color: var(--accent-loss);
+}
+.mrow__btn--sell:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.mrow__btn--sub {
+  color: var(--accent-gain);
+  background: rgba(0, 212, 168, 0.08);
+  border-color: rgba(0, 212, 168, 0.3);
+  padding: 5px 12px;
+}
+.mrow__btn--sub:hover {
+  background: rgba(0, 212, 168, 0.18);
+  border-color: var(--accent-gain);
+}
+
+.mrow__btn--unsub {
+  color: var(--text-muted);
+  background: transparent;
+  border-color: var(--border-color);
+  padding: 5px 12px;
+}
+.mrow__btn--unsub:hover {
+  color: var(--accent-loss);
+  background: rgba(255, 77, 106, 0.08);
+  border-color: var(--accent-loss);
+}
+
+.mpanel__no-results {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px;
+  font-size: 13px;
+}
+
+@media (max-width: 1024px) {
+  .mpanel__table .mrow__stat { display: none; }
+  .mpanel__table th:nth-child(5),
+  .mpanel__table td:nth-child(5),
+  .mpanel__table th:nth-child(6),
+  .mpanel__table td:nth-child(6) { display: none; }
+}
+
+@media (max-width: 768px) {
+  .mpanel { padding: 16px; }
+  .mpanel__table { font-size: 12px; }
+  .mpanel__table td { padding: 10px 6px; }
+  .mpanel__table th { padding: 0 6px 10px; font-size: 9px; }
+  .mrow__company { display: none; }
+  .mpanel__table th:nth-child(2),
+  .mpanel__table td:nth-child(2) { display: none; }
+  .mrow__btn { padding: 4px 10px; font-size: 10px; }
+  .mrow__actions { gap: 4px; }
+}
+
+@media (max-width: 480px) {
+  .mpanel { padding: 12px 10px; }
+  .mpanel__header { gap: 10px; }
+  .mpanel__title { font-size: 13px; }
+  .mrow__btn { padding: 3px 8px; font-size: 9px; }
+  .mpanel__table td { padding: 8px 4px; }
+}
+

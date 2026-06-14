@@ -1,0 +1,121 @@
+.pfpage { display: flex; flex-direction: column; gap: 22px; }
+.pfpage__title { font-size: 24px; font-weight: 700; color: var(--text-primary); }
+
+.pfpage__summary {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 14px;
+}
+.pfpage__sum-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pfpage__sum-card--main {
+  border-color: rgba(0, 212, 168, 0.2);
+}
+.pfpage__sum-label {
+  font-size: 10px; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.8px;
+}
+.pfpage__sum-big {
+  font-family: var(--font-mono); font-size: 28px; font-weight: 700; color: var(--text-primary);
+}
+.pfpage__sum-value {
+  font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-primary);
+}
+.pfpage__sum-change {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+}
+.pfpage__sum-change.gain { color: var(--accent-gain); }
+.pfpage__sum-change.loss { color: var(--accent-loss); }
+
+.pfpage__section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.pfpage__section-title {
+  font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px;
+}
+.pfpage__empty {
+  font-size: 13px; color: var(--text-muted); text-align: center; padding: 24px 0;
+}
+
+.pfpage__table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.pfpage__table th {
+  text-align: left; font-size: 10px; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.7px; padding: 0 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+.pfpage__right { text-align: right !important; }
+.pfpage__table td {
+  padding: 12px 10px; border-bottom: 1px solid rgba(30, 41, 59, 0.3);
+  color: var(--text-primary); font-family: var(--font-mono);
+}
+.pfpage__ticker { font-weight: 700; letter-spacing: 0.5px; }
+.pfpage__row:hover { background: var(--bg-card-hover); }
+td.gain { color: var(--accent-gain); font-weight: 600; }
+td.loss { color: var(--accent-loss); font-weight: 600; }
+
+.pfpage__history { display: flex; flex-direction: column; gap: 0; }
+.pfpage__trade {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 0; border-bottom: 1px solid var(--border-color);
+}
+.pfpage__trade:last-child { border-bottom: none; }
+.pfpage__trade-left { display: flex; align-items: center; gap: 10px; }
+.pfpage__trade-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px;
+  font-family: var(--font-mono); letter-spacing: 0.5px;
+}
+.pfpage__trade-badge.buy {
+  color: var(--accent-gain); background: rgba(0, 212, 168, 0.1);
+}
+.pfpage__trade-badge.sell {
+  color: var(--accent-loss); background: rgba(255, 77, 106, 0.1);
+}
+.pfpage__trade-ticker {
+  font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--text-primary);
+}
+.pfpage__trade-detail { font-size: 12px; color: var(--text-muted); }
+.pfpage__trade-right { text-align: right; }
+.pfpage__trade-total {
+  display: block; font-family: var(--font-mono); font-size: 14px;
+  font-weight: 600; color: var(--text-primary);
+}
+.pfpage__trade-time {
+  font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);
+}
+
+@media (max-width: 768px) {
+  .pfpage__summary { grid-template-columns: 1fr 1fr; }
+  .pfpage__sum-big { font-size: 22px; }
+  .pfpage__sum-value { font-size: 16px; }
+  .pfpage__section { padding: 16px; }
+  .pfpage__table td { padding: 10px 6px; font-size: 12px; }
+  .pfpage__table th { padding: 0 6px 10px; font-size: 9px; }
+  .pfpage__trade { padding: 10px 0; }
+  .pfpage__trade-ticker { font-size: 12px; }
+  .pfpage__trade-total { font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .pfpage { gap: 14px; }
+  .pfpage__title { font-size: 18px; }
+  .pfpage__summary { grid-template-columns: 1fr; gap: 10px; }
+  .pfpage__sum-card { padding: 14px 16px; }
+  .pfpage__sum-big { font-size: 20px; }
+  .pfpage__table th:nth-child(3),
+  .pfpage__table td:nth-child(3),
+  .pfpage__table th:nth-child(4),
+  .pfpage__table td:nth-child(4) { display: none; }
+  .pfpage__trade-left { gap: 6px; }
+  .pfpage__trade-detail { font-size: 10px; }
+}
+

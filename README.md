@@ -2,6 +2,8 @@
 
 A real-time stock broker client web dashboard that allows users to subscribe to supported stocks, view live price updates via WebSocket, execute trades (buy/sell), manage a wallet, and maintain personal watchlists — all without refreshing the page. The app supports multiple concurrent users with independent dashboards updating asynchronously.
 
+**Live Demo:** [https://stock-dashboard-psev.onrender.com](https://stock-dashboard-psev.onrender.com)
+
 ## Tech Stack
 
 | Layer    | Technology                        |

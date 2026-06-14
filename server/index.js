@@ -239,6 +239,19 @@ app.post("/api/wallet/withdraw", (req, res) => {
   res.json({ cash: pf.cash, portfolio: pf });
 });
 
+// Serve static client files in production
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+// Fallback to client-side router for non-API routes
+app.get("*", (req, res) => {
+  // If request is for /api/*, don't serve index.html (let it return 404)
+  if (req.path.startsWith("/api/")) {
+    return res.status(404).json({ error: "API route not found" });
+  }
+  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+});
+
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 

@@ -26,15 +26,85 @@ export function StockProvider({ children }) {
   const reconnectTimer = useRef(null);
 
   
+  const userEmail = user?.email;
+  const hasUser = !!user;
+
+  // Fetch portfolio on login
   useEffect(() => {
-    if (!user) return;
-    fetch(`/api/portfolio/${encodeURIComponent(user.email)}`)
+    if (!userEmail) return;
+    fetch(`/api/portfolio/${encodeURIComponent(userEmail)}`)
       .then((r) => r.json())
       .then((pf) => setPortfolio(pf))
       .catch(console.error);
-  }, [user]);
+  }, [userEmail]);
 
-  
+  // Fetch initial stock details, history, and stats on login for instant display
+  useEffect(() => {
+    if (!userEmail) return;
+
+    fetch("/api/stocks")
+      .then((r) => r.json())
+      .then((data) => {
+        setPrices((prev) => {
+          const next = { ...prev };
+          let changed = false;
+          data.forEach((s) => {
+            if (next[s.ticker] === undefined) {
+              next[s.ticker] = s.price;
+              changed = true;
+            }
+          });
+          return changed ? next : prev;
+        });
+        setOpeningPrices((prev) => {
+          const next = { ...prev };
+          let changed = false;
+          data.forEach((s) => {
+            if (next[s.ticker] === undefined) {
+              next[s.ticker] = s.open;
+              changed = true;
+            }
+          });
+          return changed ? next : prev;
+        });
+      })
+      .catch(console.error);
+
+    fetch("/api/stocks/stats")
+      .then((r) => r.json())
+      .then((stats) => {
+        setSessionStats((prev) => {
+          const next = { ...prev };
+          let changed = false;
+          Object.keys(stats).forEach((ticker) => {
+            if (next[ticker] === undefined) {
+              next[ticker] = stats[ticker];
+              changed = true;
+            }
+          });
+          return changed ? next : prev;
+        });
+      })
+      .catch(console.error);
+
+    fetch("/api/stocks/history")
+      .then((r) => r.json())
+      .then((hist) => {
+        setPriceHistory((prev) => {
+          const next = { ...prev };
+          let changed = false;
+          Object.keys(hist).forEach((ticker) => {
+            if (next[ticker] === undefined) {
+              next[ticker] = hist[ticker].slice(-HISTORY_CAP);
+              changed = true;
+            }
+          });
+          return changed ? next : prev;
+        });
+      })
+      .catch(console.error);
+  }, [userEmail]);
+
   const addToast = useCallback((toast) => {
     const id = Date.now() + Math.random();
     setToasts((prev) => [...prev, { ...toast, id }]);
@@ -47,9 +117,9 @@ export function StockProvider({ children }) {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
-  
+  // WebSocket price feed connection
   useEffect(() => {
-    if (!user) return;
+    if (!hasUser) return;
     let disposed = false;
 
     function connect() {
@@ -137,7 +207,7 @@ export function StockProvider({ children }) {
       setSessionStats({});
       setNews([]);
     };
-  }, [user, addToast]);
+  }, [hasUser, addToast]);
 
   
   const subscribe = useCallback(async (email, ticker) => {
